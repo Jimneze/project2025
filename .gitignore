@@ -12,3 +12,5 @@ core/media/
 *.DS_Store
 *.gz
 
+# remove media files
+media/*

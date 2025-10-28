@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # local apps
+    'accounts.apps.AuthConfig',
     'todo.apps.TodoConfig',
 ]
 
@@ -51,7 +52,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'todo.context_processors.unread_notifications_count',
+                # 'todo.context_processors.unread_notifications_count',
             ],
         },
     },
@@ -108,6 +109,8 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'core/static')]
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-AUTH_PASSWORD_RESET_TIMEOUT = 3600
-AUTH_USER_MODEL = 'todo.CustomUser'
-FERNET_KEY = os.getenv('FERNET_KEY')
+
+# Login/Logout URLs
+LOGIN_URL = 'accounts:login'
+LOGIN_REDIRECT_URL = 'todo:todo_list'
+LOGOUT_REDIRECT_URL = 'accounts:login'
